@@ -1,0 +1,94 @@
+#Regex Tutorial from Coursera
+# Completed on 9/5/22
+# Writing a regex that will validate a password to make sure it meets the following criteria;
+# + at least 8 characters
+# + uppercase letters
+# + lowercase letters
+# + numbers
+# + any of the following characters @#$%^&+=
+
+regex = "[A-Za-z0-9@#$%^&+=]{8,}"
+
+import re
+pwd = input("enter a password")
+
+if re.fullmatch(regex,pwd):
+  print("This password is a match")
+else:
+  print("Password is invalid")
+  
+#Writing a regex that will validate a password to make sure it meets All of the following criteria:
+
+# + at least 8 characters
+# + Contains an uppercase letters
+# + Contains a lowercase letters
+# + Contains a number
+
+regex = "(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]{8,})"
+if re.fullmatch(regex,pwd):
+  print("Verified")
+else:
+  print("Invalid")
+  
+# User Validation Section
+
+input1 = '19:294'
+import re
+re.fullmatch('[0-9]{2}:[0-9]{2}',input1)
+[re.fullmatch('[0-9]{2}:[0-9]{2}',x) for x in inputs]
+
+#Time Validation
+
+import re
+inputs = ['18:29', '23:55', '123', 'ab:cd','10:299','99:99']
+regex = '([01][0-9]|[2[0-3]]) : ([0-5][0-9])'
+[re.fullmatch(regex, x) for x in inputs]
+
+#Email Validation
+inputs = ['rog35@gmail.com', 'r_duke95@outlook.com', 's.rog83@outlook.com']
+regex = '^(\w|\.|\_\-)+[@]\w+[.]\w{2,3}$'
+
+#Username Validation
+inputs = ['a_roger', 'aroger', 'a.roger_de', 'a.roger_2']
+regex = '^[a-zA-Z_.]+$'
+[re.fullmatch(regex, x) for x in inputs]
+
+#Text Validation
+import re
+text = 'abcdefghujhg'
+re.findall('ab.*?', text)
+text = 'peter piper picked a peck of pickled peppers'
+re.findall('p.*?e.*?r', text)
+
+#
+#Problem 1 - Finding text relating to specific words
+#
+
+text = 'crypto-bot that this trading Bitcoin and other currencies'
+
+re.match('crypto(.{1,30})coin', text)
+
+#
+#Problem 2 - finding text relating to money
+#
+
+text = ''' 
+If you invested $1 in the year 1801 you would have $18007782.41 today.
+This is a 7.967% return on investment.
+But if you invested only .25 in 1801, you would end up with $4521947.8525
+'''
+
+re.findall('(\$[0-9]+(\.[0-9]*)?)', text)
+
+#
+#Problem 3- Text Replacement
+#
+
+text = '''
+Alice Wonderland married John Doe.
+The new name of former 'Alice Wonderland' is Alice Doe.
+Alice Wonderland replaces her old name 'Wonderland' with her new name 'Doe'.
+Alice's sister Jane Wonderland still keeps her old name.
+'''
+
+re.sub("Alice Wonderland(?!')", 'Alice Doe', text)
