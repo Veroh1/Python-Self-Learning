@@ -1,0 +1,9 @@
+bill = float(input("How much is the bill?"))
+tip = int(input("How much would you like to tip? 18, 20, or 22?"))
+split = int(input("How many people are splitting the bill?"))
+
+tipper = 1+tip/100
+share = ((bill/split)*tipper)
+final = "{:.2f}".format(share)
+
+print(f"Each person should pay {final}!")
